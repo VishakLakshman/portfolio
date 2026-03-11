@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Software Engineer Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--bg:#f5f5f7;
+--text:#1d1d1f;
+--card:#ffffff;
+--accent:#0071e3;
+--glass:rgba(255,255,255,0.6);
+}
+
+body.dark{
+--bg:#0b0b0b;
+--text:#f5f5f7;
+--card:#151515;
+--glass:rgba(20,20,20,0.6);
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:var(--bg);
+color:var(--text);
+transition:0.4s;
+}
+
+section{
+padding:120px 10%;
+}
+
+/* Glass Navbar */
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 10%;
+backdrop-filter: blur(14px);
+background:var(--glass);
+z-index:1000;
+}
+
+nav a{
+margin-left:25px;
+text-decoration:none;
+color:var(--text);
+font-weight:500;
+}
+
+.toggle{
+cursor:pointer;
+border:none;
+background:none;
+font-size:18px;
+}
+
+/* Hero */
+
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+position:relative;
+overflow:hidden;
+}
+
+.hero h1{
+font-size:70px;
+letter-spacing:-2px;
+}
+
+.hero span{
+color:var(--accent);
+}
+
+.hero-bg{
+position:absolute;
+width:600px;
+height:600px;
+background:radial-gradient(circle,var(--accent),transparent);
+filter:blur(120px);
+z-index:-1;
+transition:transform 0.2s;
+}
+
+.hero p{
+margin-top:20px;
+max-width:600px;
+font-size:20px;
+opacity:0.8;
+}
+
+/* Scroll Story Sections */
+
+.story{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:60px;
+}
+
+.story img{
+width:420px;
+border-radius:20px;
+box-shadow:0 20px 60px rgba(0,0,0,0.15);
+}
+
+.story-text{
+max-width:500px;
+}
+
+/* Projects */
+
+.projects-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:40px;
+}
+
+.project-card{
+background:var(--card);
+border-radius:20px;
+overflow:hidden;
+transform-style:preserve-3d;
+transition:transform 0.3s;
+box-shadow:0 15px 40px rgba(0,0,0,0.15);
+}
+
+.project-card:hover{
+transform:rotateY(8deg) rotateX(6deg) scale(1.03);
+}
+
+.project-card img{
+width:100%;
+height:180px;
+object-fit:cover;
+}
+
+.project-content{
+padding:20px;
+}
+
+.project-links{
+margin-top:10px;
+}
+
+.project-links a{
+margin-right:14px;
+color:var(--accent);
+text-decoration:none;
+font-weight:500;
+}
+
+/* Reveal animations */
+
+.reveal{
+opacity:0;
+transform:translateY(60px);
+transition:1s;
+}
+
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
+
+/* Contact */
+
+.contact{
+text-align:center;
+}
+
+footer{
+text-align:center;
+padding:40px;
+opacity:0.6;
+}
+
+.theme-switch{
+position:relative;
+width:52px;
+height:28px;
+display:inline-block;
+}
+
+.theme-switch input{
+display:none;
+}
+
+.slider{
+position:absolute;
+cursor:pointer;
+top:0;
+left:0;
+right:0;
+bottom:0;
+
+background:rgba(255,255,255,0.25);
+backdrop-filter:blur(12px);
+border-radius:40px;
+transition:0.4s;
+border:1px solid rgba(255,255,255,0.3);
+}
+
+.slider:before{
+content:"";
+position:absolute;
+height:22px;
+width:22px;
+left:3px;
+top:2.5px;
+
+background:rgba(255,255,255,0.9);
+border-radius:50%;
+
+box-shadow:
+0 2px 8px rgba(0,0,0,0.2),
+inset 0 1px 2px rgba(255,255,255,0.6);
+
+transition:0.4s;
+}
+
+/* Checked State */
+
+input:checked + .slider{
+background:rgba(0,113,227,0.35);
+border:1px solid rgba(0,113,227,0.6);
+}
+
+input:checked + .slider:before{
+transform:translateX(24px);
+background:white;
+}
+
+/* Dark Mode Compatibility */
+
+body.dark .slider{
+background:rgba(255,255,255,0.08);
+border:1px solid rgba(255,255,255,0.15);
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+<strong>Portfolio</strong>
+
+<div>
+<a href="#about">About</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+<label class="theme-switch">
+<input type="checkbox" id="themeToggle">
+<span class="slider"></span>
+</label>
+</div>
+</nav>
+
+<section class="hero">
+
+<div class="hero-bg" id="hero-bg"></div>
+
+<h1>Hello I'm <span>Vishak Lakshman</span></h1>
+
+<p>
+Software Engineer crafting scalable systems, beautiful interfaces,
+and modern digital experiences.
+</p>
+
+</section>
+
+<section id="about" class="story reveal">
+
+<div class="story-text">
+<h2>Engineering with precision</h2>
+
+<p>
+I build performant web applications, scalable backend systems,
+and intuitive user interfaces. My work focuses on combining
+engineering discipline with exceptional user experience.
+</p>
+</div>
+
+<img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c">
+
+</section>
+
+<section class="story reveal">
+
+<img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c">
+
+<div class="story-text">
+<h2>Designed for performance</h2>
+
+<p>
+From frontend interactions to backend infrastructure,
+I design systems that scale and perform reliably.
+</p>
+</div>
+
+</section>
+
+
+<section class="story reveal">
+
+<div class="story-text">
+<h2>Section 3</h2>
+
+<p>
+From frontend interactions to backend infrastructure,
+I design systems that scale and perform reliably.
+</p>
+</div>
+
+<img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c">
+
+</section>
+
+
+<section id="projects" class="reveal">
+
+<h2>Projects</h2>
+
+<div class="projects-grid">
+
+<div class="project-card">
+<img src="https://images.unsplash.com/photo-1677442135136-760c813028c0">
+<div class="project-content">
+<h3>AI Chat App</h3>
+<p>Realtime AI assistant with streaming responses.</p>
+<div class="project-links">
+<a href="#">Live Demo</a>
+<a href="#">GitHub</a>
+</div>
+</div>
+</div>
+
+<div class="project-card">
+<img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71">
+<div class="project-content">
+<h3>Analytics Dashboard</h3>
+<p>Realtime data visualization platform.</p>
+<div class="project-links">
+<a href="#">Live Demo</a>
+<a href="#">GitHub</a>
+</div>
+</div>
+</div>
+
+<div class="project-card">
+<img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd">
+<div class="project-content">
+<h3>E-Commerce Platform</h3>
+<p>Full stack commerce system with payments.</p>
+<div class="project-links">
+<a href="#">Live Demo</a>
+<a href="#">GitHub</a>
+</div>
+</div>
+</div>
+
+<div class="project-card">
+<img src="https://images.unsplash.com/photo-1550439062-609e1531270e">
+<div class="project-content">
+<h3>Developer Blog</h3>
+<p>Markdown blog with SEO optimization.</p>
+<div class="project-links">
+<a href="#">Live Demo</a>
+<a href="#">GitHub</a>
+</div>
+</div>
+</div>
+
+<div class="project-card">
+<img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd">
+<div class="project-content">
+<h3>Task Manager</h3>
+<p>Productivity tool for teams and projects.</p>
+<div class="project-links">
+<a href="#">Live Demo</a>
+<a href="#">GitHub</a>
+</div>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<section id="contact" class="contact reveal">
+
+<h2>Contact</h2>
+
+<p>Let's build something great together.</p>
+
+<p>Email: vishak.0041@gmail.com</p>
+
+</section>
+
+<footer>
+© 2026 Vishak Lakshman
+</footer>
+
+<script>
+
+/* Dark Mode */
+
+const toggle = document.getElementById("themeToggle");
+
+toggle.addEventListener("change", () => {
+document.body.classList.toggle("dark");
+});
+
+/* Scroll Reveal */
+
+function reveal(){
+document.querySelectorAll(".reveal").forEach(el=>{
+const top=el.getBoundingClientRect().top
+const windowHeight=window.innerHeight
+if(top < windowHeight-100){
+el.classList.add("active")
+}
+})
+}
+
+window.addEventListener("scroll",reveal)
+
+/* Hero Parallax */
+
+const bg=document.getElementById("hero-bg")
+
+document.addEventListener("mousemove",(e)=>{
+let x=(window.innerWidth/2-e.pageX)/30
+let y=(window.innerHeight/2-e.pageY)/30
+bg.style.transform=`translate(${x}px,${y}px)`
+})
+
+</script>
+
+</body>
+</html>
