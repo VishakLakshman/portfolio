@@ -742,6 +742,130 @@ footer{
         <div class="proj-header" onclick="toggleProj(this)" role="button" aria-expanded="false">
           <span class="proj-idx">01</span>
           <div class="proj-title-block">
+            <div class="proj-name">Multi-Agent Invoice Generator</div>
+            <div class="proj-tagline">invoicing · internal platform · 2024–Present</div>
+          </div>
+          <div class="proj-badges">
+            <span class="badge badge-scale">3% failure rate</span>
+            <span class="badge badge-impact">100% compliance</span>
+          </div>
+          <span class="proj-chevron">▼</span>
+        </div>
+        <div class="proj-body">
+          <div class="proj-body-inner">
+            <div>
+              <div class="proj-block">
+                <span class="proj-section-label">Summary</span>
+                <p>A Multi-Agent Pipeline built to automate invoice generation for a Workers' Compensation insurance policy system. The pipeline is deployed entirely on Amazon Web Services (AWS) and is engineered to serve a policyholder base exceeding 200,000 accounts.</p>
+              </div>
+              <div class="proj-block">
+                <span class="proj-section-label">Problem</span>
+                <p>Prior to this system, invoice generation was a fragile, largely manual process that suffered from a greater than <strong>23% failure rate</strong> across critical failure modes including data extraction errors, compliance violations, document binding failures, and delivery breakdowns. These failures generated significant operational overhead through human rework cycles and posed serious regulatory exposure.</p>
+              </div>
+              <div class="proj-block">
+                <span class="proj-section-label">My Contribution</span>
+                <p>Sole designer of the architecture. Introduced a coordinated four-agent LLM architecture built on LangChain and LangGraph, where each agent owns a discrete functional domain like Data Collector, Compliance validator, Invoice Binder and Delivery Agent.Post-deployment results demonstrate a 95%+ reduction in invoice generation failures, elimination of manual rework loops</p>
+              </div>
+              <div class="proj-block">
+                <span class="proj-section-label">Impact</span>
+                <table class="impact-table">
+                  <tr><td>Failure Rate</td><td><span class="metric-val metric-pos"> 23% → 3% </span></td></tr>
+                  <tr><td>Compliance Violation</td><td><span class="metric-val metric-blue">0.0%</span> post-production</td></tr>
+                  <tr><td>SLA Adherence</td><td><span class="metric-val metric-pos">> 99.5%</span></td></tr>
+                  <tr><td>Reworks per billing cycle</td><td><span class="metric-val metric-blue">< 40% </span> hrs/cycle</td></tr>
+                </table>
+              </div>
+              <div class="proj-block">
+                <span class="proj-section-label">Tech Stack</span>
+                <div class="stack-chips">
+                  <span class="stack-chip">Python</span>
+                  <span class="stack-chip">LangGraph</span>
+                  <span class="stack-chip">LangChain</span>
+                  <span class="stack-chip">gRPC</span>
+                  <span class="stack-chip">DynamoDB</span>
+                  <span class="stack-chip">CloudWatch</span>
+                  <span class="stack-chip">AWS</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="proj-block">
+                <span class="proj-section-label">Links</span>
+                <div class="proj-links">
+                  <a href="design_docs/MultiAgent_LLM_Invoice_Pipeline_SDD.pdf" class="proj-link"><span class="proj-link-icon">📄</span> design doc</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="proj-panel" role="listitem">
+        <div class="proj-header" onclick="toggleProj(this)" role="button" aria-expanded="false">
+          <span class="proj-idx">02</span>
+          <div class="proj-title-block">
+            <div class="proj-name">Document retrieval co-pilot</div>
+            <div class="proj-tagline">co-pilot · internal platform · 2022–2024</div>
+          </div>
+          <div class="proj-badges">
+            <span class="badge badge-scale">< 2 min retrieval</span>
+            <span class="badge badge-impact">0.87 recall</span>
+          </div>
+          <span class="proj-chevron">▼</span>
+        </div>
+        <div class="proj-body">
+          <div class="proj-body-inner">
+            <div>
+              <div class="proj-block">
+                <span class="proj-section-label">Summary</span>
+                <p>Document Retrieval Copilot an AI-powered, agentic Retrieval-Augmented Generation (RAG) pipeline deployed entirely on Amazon Web Services (AWS) for a Workers' Compensation insurance platform serving more than 200,000 policyholders.</p>
+              </div>
+              <div class="proj-block">
+                <span class="proj-section-label">Problem</span>
+                <p>Claim handlers and policyholders were required to navigate multiple disconnected services and applications including separate policy management portals, claims systems, and document repositories to locate relevant policy and claim documents. This fragmented experience produced significant retrieval latency, handler inefficiency, and policyholder frustration.</p>
+              </div>
+              <div class="proj-block">
+                <span class="proj-section-label">My Contribution</span>
+                <p>Owned the entire MLOps architecture.ft implementation. Worked with a team of 4 engineers in building the core pipeline that ingests policy and claims documents, classifies them using an agentic RAG architecture and and surfaces results through a UI chatbot. Reduced mean failover time from <strong>4.5 minutes to 2.7 minutes</strong>. Authored the entire Design doc for the project.</p>
+              </div>
+              <div class="proj-block">
+                <span class="proj-section-label">Impact</span>
+                <table class="impact-table">
+                  <tr><td>Time to document: Business</td><td><span class="metric-val metric-pos">18min → 10.3min</span> ↓ 43% </td></tr>
+                  <tr><td>Time to document: Users</td><td><span class="metric-val metric-pos">22min → 3min</span> ↓ 83% </td></tr>
+                  <tr><td>Classification/Compliance</td><td><span class="metric-val metric-blue">Automated</span>, zero manual ops</td></tr>
+                  <tr><td>Retrieval recall</td><td><span class="metric-val metric-pos">↓ to 0.87</span> in 24 months post-ship</td></tr>
+                </table>
+              </div>
+              <div class="proj-block">
+                <span class="proj-section-label">Tech Stack</span>
+                <div class="stack-chips">
+                  <span class="stack-chip">AWS Bedrock</span>
+                  <span class="stack-chip">FAISS</span>
+                  <span class="stack-chip">Agentic RAG</span>
+                  <span class="stack-chip">LangChain</span>
+                  <span class="stack-chip">React</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="proj-block">
+                <span class="proj-section-label">Links</span>
+                <div class="proj-links">
+                  <a href="design_docs/DocumentRetrieval_Copilot_SDD.pdf" class="proj-link"><span class="proj-link-icon">📄</span> design doc</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="proj-panel" role="listitem">
+        <div class="proj-header" onclick="toggleProj(this)" role="button" aria-expanded="false">
+          <span class="proj-idx">03</span>
+          <div class="proj-title-block">
             <div class="proj-name">ACH Payment Gateway</div>
             <div class="proj-tagline">payments infra · internal platform · 2020–2022</div>
           </div>
@@ -805,130 +929,6 @@ footer{
                 <span class="proj-section-label">Links</span>
                 <div class="proj-links">
                   <a href="design_docs/payment_gateway_design_doc.pdf" class="proj-link"><span class="proj-link-icon">📄</span> design doc (sanitized)</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 2 -->
-      <div class="proj-panel" role="listitem">
-        <div class="proj-header" onclick="toggleProj(this)" role="button" aria-expanded="false">
-          <span class="proj-idx">02</span>
-          <div class="proj-title-block">
-            <div class="proj-name">Multi-Agent Invoice Generator</div>
-            <div class="proj-tagline">invoicing · internal platform · 2024–Present</div>
-          </div>
-          <div class="proj-badges">
-            <span class="badge badge-scale">3% failure rate</span>
-            <span class="badge badge-impact">100% compliance</span>
-          </div>
-          <span class="proj-chevron">▼</span>
-        </div>
-        <div class="proj-body">
-          <div class="proj-body-inner">
-            <div>
-              <div class="proj-block">
-                <span class="proj-section-label">Summary</span>
-                <p>A Multi-Agent Pipeline built to automate invoice generation for a Workers' Compensation insurance policy system. The pipeline is deployed entirely on Amazon Web Services (AWS) and is engineered to serve a policyholder base exceeding 200,000 accounts.</p>
-              </div>
-              <div class="proj-block">
-                <span class="proj-section-label">Problem</span>
-                <p>Prior to this system, invoice generation was a fragile, largely manual process that suffered from a greater than <strong>23% failure rate</strong> across critical failure modes including data extraction errors, compliance violations, document binding failures, and delivery breakdowns. These failures generated significant operational overhead through human rework cycles and posed serious regulatory exposure.</p>
-              </div>
-              <div class="proj-block">
-                <span class="proj-section-label">My Contribution</span>
-                <p>Sole designer of the architecture. Introduced a coordinated four-agent LLM architecture built on LangChain and LangGraph, where each agent owns a discrete functional domain like Data Collector, Compliance validator, Invoice Binder and Delivery Agent.Post-deployment results demonstrate a 95%+ reduction in invoice generation failures, elimination of manual rework loops</p>
-              </div>
-              <div class="proj-block">
-                <span class="proj-section-label">Impact</span>
-                <table class="impact-table">
-                  <tr><td>Failure Rate</td><td><span class="metric-val metric-pos"> 23% → 3% </span></td></tr>
-                  <tr><td>Compliance Violation</td><td><span class="metric-val metric-blue">0.0%</span> post-production</td></tr>
-                  <tr><td>SLA Adherence</td><td><span class="metric-val metric-pos">> 99.5%</span></td></tr>
-                  <tr><td>Reworks per billing cycle</td><td><span class="metric-val metric-blue">< 40% </span> hrs/cycle</td></tr>
-                </table>
-              </div>
-              <div class="proj-block">
-                <span class="proj-section-label">Tech Stack</span>
-                <div class="stack-chips">
-                  <span class="stack-chip">Python</span>
-                  <span class="stack-chip">LangGraph</span>
-                  <span class="stack-chip">LangChain</span>
-                  <span class="stack-chip">gRPC</span>
-                  <span class="stack-chip">DynamoDB</span>
-                  <span class="stack-chip">CloudWatch</span>
-                  <span class="stack-chip">AWS</span>
-                </div>
-              </div>
-            </div>
-            <div>
-              <div class="proj-block">
-                <span class="proj-section-label">Links</span>
-                <div class="proj-links">
-                  <a href="design_docs/MultiAgent_LLM_Invoice_Pipeline_SDD.pdf" class="proj-link"><span class="proj-link-icon">📄</span> design doc</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 3 -->
-      <div class="proj-panel" role="listitem">
-        <div class="proj-header" onclick="toggleProj(this)" role="button" aria-expanded="false">
-          <span class="proj-idx">03</span>
-          <div class="proj-title-block">
-            <div class="proj-name">Document retrieval co-pilot</div>
-            <div class="proj-tagline">co-pilot · internal platform · 2022–2024</div>
-          </div>
-          <div class="proj-badges">
-            <span class="badge badge-scale">< 2 min retrieval</span>
-            <span class="badge badge-impact">0.87 recall</span>
-          </div>
-          <span class="proj-chevron">▼</span>
-        </div>
-        <div class="proj-body">
-          <div class="proj-body-inner">
-            <div>
-              <div class="proj-block">
-                <span class="proj-section-label">Summary</span>
-                <p>Document Retrieval Copilot an AI-powered, agentic Retrieval-Augmented Generation (RAG) pipeline deployed entirely on Amazon Web Services (AWS) for a Workers' Compensation insurance platform serving more than 200,000 policyholders.</p>
-              </div>
-              <div class="proj-block">
-                <span class="proj-section-label">Problem</span>
-                <p>claim handlers and policyholders were required to navigate multiple disconnected services and applications including separate policy management portals, claims systems, and document repositories to locate relevant policy and claim documents. This fragmented experience produced significant retrieval latency, handler inefficiency, and policyholder frustration.</p>
-              </div>
-              <div class="proj-block">
-                <span class="proj-section-label">My Contribution</span>
-                <p>Owned the entire MLOps architecture.ft implementation. Worked with a team of 4 engineers in building the core pipeline that ingests policy and claims documents, classifies them using an agentic RAG architecture and and surfaces results through a UI chatbot. Reduced mean failover time from <strong>4.5 minutes to 2.7 minutes</strong>. Authored the entire Design doc for the project.</p>
-              </div>
-              <div class="proj-block">
-                <span class="proj-section-label">Impact</span>
-                <table class="impact-table">
-                  <tr><td>Time to document: Business</td><td><span class="metric-val metric-pos">18min → 10.3min</span> ↓ 43% </td></tr>
-                  <tr><td>Time to document: Users</td><td><span class="metric-val metric-pos">22min → 3min</span> ↓ 83% </td></tr>
-                  <tr><td>Classification/Compliance</td><td><span class="metric-val metric-blue">Automated</span>, zero manual ops</td></tr>
-                  <tr><td>Retrieval recall</td><td><span class="metric-val metric-pos">↓ to 0.87</span> in 24 months post-ship</td></tr>
-                </table>
-              </div>
-              <div class="proj-block">
-                <span class="proj-section-label">Tech Stack</span>
-                <div class="stack-chips">
-                  <span class="stack-chip">AWS Bedrock</span>
-                  <span class="stack-chip">FAISS</span>
-                  <span class="stack-chip">Agentic RAG</span>
-                  <span class="stack-chip">LangChain</span>
-                  <span class="stack-chip">React</span>
-                </div>
-              </div>
-            </div>
-            <div>
-              <div class="proj-block">
-                <span class="proj-section-label">Links</span>
-                <div class="proj-links">
-                  <a href="design_docs/DocumentRetrieval_Copilot_SDD.pdf" class="proj-link"><span class="proj-link-icon">📄</span> design doc</a>
                 </div>
               </div>
             </div>
