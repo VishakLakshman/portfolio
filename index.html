@@ -508,6 +508,108 @@ footer{
   .proj-body{max-height:none!important}
 }
 </style>
+<style>
+/* ── Dark mode tokens ──────────────────────────────────── */
+[data-theme="dark"] {
+  --bg:        #0e0e0e;
+  --bg-card:   #161616;
+  --bg-subtle: #1c1c1c;
+  --border:    #2a2a2a;
+  --border-med:#3a3a3a;
+  --text:      #edece8;
+  --text-2:    #8a8880;
+  --text-3:    #524f4a;
+  --accent:    #6ba3f5;       /* lighter blue for dark bg */
+  --accent-bg: #111824;
+  --green:     #4ade80;
+  --green-bg:  #0d1f14;
+}
+ 
+/* Smooth transition when toggling */
+body {
+  transition: background 0.25s ease, color 0.25s ease;
+}
+*, *::before, *::after {
+  transition:
+    background-color 0.25s ease,
+    border-color     0.25s ease,
+    color            0.25s ease;
+}
+/* Exclude transitions that fight animations */
+.reveal, .proj-body, .proj-chevron {
+  transition: none !important;
+}
+.reveal {
+  transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1),
+              transform 0.6s cubic-bezier(0.22,1,0.36,1) !important;
+}
+.proj-body {
+  transition: max-height 0.4s cubic-bezier(0.22,1,0.36,1) !important;
+}
+.proj-chevron {
+  transition: transform 0.25s cubic-bezier(0.22,1,0.36,1) !important;
+}
+ 
+/* Nav background override in dark mode */
+[data-theme="dark"] #nav {
+  background: rgba(14,14,14,0.92);
+}
+ 
+/* Code/arch box in dark mode */
+[data-theme="dark"] .arch-box {
+  background: #111;
+  border-color: #2a2a2a;
+  color: #6ba3f5;
+}
+ 
+/* Toggle button */
+#theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border: 1px solid var(--border-med);
+  border-radius: 6px;
+  background: var(--bg-card);
+  color: var(--text-2);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+  white-space: nowrap;
+  margin-right: 4px;          /* sits to the left of the Resume button */
+}
+#theme-toggle:hover {
+  border-color: var(--text);
+  color: var(--text);
+  background: var(--bg);
+}
+#theme-toggle .toggle-icon {
+  font-size: 0.85rem;
+  line-height: 1;
+}
+ 
+/* System preference: auto-enable dark on first load if user prefers dark */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:        #0e0e0e;
+    --bg-card:   #161616;
+    --bg-subtle: #1c1c1c;
+    --border:    #2a2a2a;
+    --border-med:#3a3a3a;
+    --text:      #edece8;
+    --text-2:    #8a8880;
+    --text-3:    #524f4a;
+    --accent:    #6ba3f5;
+    --accent-bg: #111824;
+    --green:     #4ade80;
+    --green-bg:  #0d1f14;
+  }
+  :root:not([data-theme="light"]) #nav {
+    background: rgba(14,14,14,0.92);
+  }
+}
+</style>
 </head>
 <body>
 
@@ -525,6 +627,10 @@ footer{
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div style="display:flex;align-items:center;gap:10px">
+<button id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+  <span class="toggle-icon">◐</span>
+  <span id="toggle-label">Dark</span>
+</button>
       <a href="VISHAK_LAKSHMAN_UPDATED_2026.pdf" class="nav-resume">Resume ↓</a>
       <div class="nav-hamburger" onclick="openMenu()" role="button" aria-label="Open menu">
         <span></span><span></span>
@@ -1003,13 +1109,13 @@ Replay window: 72h · DLQ retention: 7d</div>
         </div>
       </div>
 
-<!-- Project 5: EV -->
+<!-- Project 5: F1 TLE -->
       <div class="proj-panel" role="listitem">
         <div class="proj-header" onclick="toggleProj(this)" role="button" aria-expanded="false">
           <span class="proj-idx">05</span>
           <div class="proj-title-block">
-            <div class="proj-name">expected-value-calc</div>
-            <div class="proj-tagline">sports-betting · personal · 2023–present</div>
+            <div class="proj-name">driver's-office-f1</div>
+            <div class="proj-tagline">telemetry analysis · personal · 2024–present</div>
           </div>
           <div class="proj-badges">
             <span class="badge badge-oss">SaaS · 2000+ users</span>
@@ -1021,12 +1127,12 @@ Replay window: 72h · DLQ retention: 7d</div>
             <div>
               <div class="proj-block">
                 <span class="proj-section-label">Summary</span>
-                <p>A self-funded passion project designed to bring data-driven decision-making to casual sports bettors. The system is built on a fully serverless AWS infrastructure for minimal operational cost. Python Lambda functions handle all computation and data management. The React frontend is a static SPA served from S3 via CloudFront. The entire backend scales automatically to support up to 2,000 concurrent users without any manual intervention.
+                <p>A self-funded passion project designed to bring data-driven telemetry analytical tool for Formula 1. The system is built on a fully serverless AWS infrastructure for minimal operational cost. Python Lambda functions handle all computation and data management with a Redis cache. The React frontend is a static SPA served from S3 via CloudFront. Right now the available modules are Side-by-side Ghost laps for Q3 sessions, Tyre Degradation analysis and Race Strategies on race days.
 </p>
               </div>
               <div class="proj-block">
                 <span class="proj-section-label">Problem</span>
-                <p>It addresses a fundamental problem in sports betting: most bettors place wagers without knowing whether the odds offered by a sportsbook represent positive or negative expected value relative to the true probability of an outcome.</p>
+                <p>Addresses the problem of dearth of Telemetry analytical tools that require local Python environments (inaccessible to non-engineers) or are proprietary broadcast tools. This provides a powerful tool casual fans and experienced engineers to have more immersion behind the engineering side of Formula 1.</p>
               </div>
 	      <div class="proj-block">
                 <span class="proj-section-label">Architecture Overview</span>
@@ -1055,7 +1161,10 @@ Consistency: AP (eventual), 2% tolerance window</div>
                   <span class="stack-chip">AWS S3</span>
 		  <span class="stack-chip">AWS API gateway</span>
 		  <span class="stack-chip">AWS Lambda</span>
-                  <span class="stack-chip">Odds API</span>
+                  <span class="stack-chip">FastAPI</span>
+                  <span class="stack-chip">Redis</span>
+                  <span class="stack-chip">GitHub Actions</span>
+
                 </div>
               </div>
             </div>
@@ -1063,8 +1172,8 @@ Consistency: AP (eventual), 2% tolerance window</div>
               <div class="proj-block">
                 <span class="proj-section-label">Links</span>
                 <div class="proj-links">
-                  <a href="design_docs/EVCalc_SDD.pdf" class="proj-link"><span class="proj-link-icon">📄</span> design doc</a>
-                  <a href="http://tyche-bucket06302026.s3-website.us-east-2.amazonaws.com" class="proj-link secondary"><span class="proj-link-icon">🖥️</span> live demo</a>
+                  <a href="design_docs/F1Telemetry_SDD.pdf" class="proj-link"><span class="proj-link-icon">📄</span> design doc</a>
+                  <a href="https://main.dnp59h57lxoxq.amplifyapp.com" class="proj-link secondary"><span class="proj-link-icon">🖥️</span> live demo</a>
                 </div>
               </div>
             </div>
@@ -1090,6 +1199,11 @@ Consistency: AP (eventual), 2% tolerance window</div>
           <span class="repo-name">biomineral-research-agent</span>
           <span class="repo-desc">Multi-agent RA for studying, designing and analyzing composite bio-minerals orchestrated through LangGraph, Python and Rust</span>
           <span class="repo-link">GitHub ↗</span>
+        </a>
+        <a href="http://tyche-bucket06302026.s3-website.us-east-2.amazonaws.com" class="repo-item" role="listitem">
+          <span class="repo-name">expected-value-calc</span>
+          <span class="repo-desc">A data-driven decision-making tool for casual sports bettors. Built on a fully serverless AWS infrastructure with Python Lambda functions and React frontend.</span>
+          <span class="repo-link">Live Demo ↗</span>
         </a>
         <a href="https://github.com/VishakLakshman/ema_backtester" class="repo-item" role="listitem">
           <span class="repo-name">ema-backtester</span>
@@ -1303,6 +1417,34 @@ window.addEventListener('resize', () => {
     b.style.maxHeight = b.scrollHeight + 'px';
   });
 });
+</script>
+<script>
+(function () {
+  /* ── Read saved preference or system preference ── */
+  const saved  = localStorage.getItem('theme');
+  const sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const initial = saved || (sysDark ? 'dark' : 'light');
+  applyTheme(initial);
+ 
+  /* ── Apply theme ── */
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    const label = document.getElementById('toggle-label');
+    if (label) label.textContent = theme === 'dark' ? 'Light' : 'Dark';
+  }
+ 
+  /* ── Toggle ── */
+  window.toggleTheme = function () {
+    const current = document.documentElement.getAttribute('data-theme');
+    applyTheme(current === 'dark' ? 'light' : 'dark');
+  };
+ 
+  /* ── Watch for system preference changes ── */
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+    if (!localStorage.getItem('theme')) applyTheme(e.matches ? 'dark' : 'light');
+  });
+})();
 </script>
 </body>
 </html>
