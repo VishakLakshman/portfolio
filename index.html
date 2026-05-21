@@ -1423,7 +1423,7 @@ window.addEventListener('resize', () => {
   /* ── Read saved preference or system preference ── */
   const saved  = localStorage.getItem('theme');
   const sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const initial = saved || (sysDark ? 'dark' : 'light');
+  const initial = saved || 'light';
   applyTheme(initial);
  
   /* ── Apply theme ── */
